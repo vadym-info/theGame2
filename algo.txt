@@ -1,0 +1,74 @@
+main
+-create quess manager
+-get number of player, 2-8
+-create player info list
+-pass player list into quess manager
+-get name and type for every player
+-create player info
+-create player based on type and name
+-generate real weight
+-pass real weight to quess manager
+-output real weight
+-:start the game
+
+
+quess manager
+-store real weight
+-store all quesses list
+-contains queue of players
+-add quess request. if is not processing then call process the quess
+-process the quess
+:start the game
+-start timer for 1500 milliseconds. when it overs then :game ends lose
+-use initial player list as firts queue of players
+-start processing the guesses
+
+
+:process the guess
+-set is processing to true
+-for every player call get guess
+-for cheater player call get guess until all quesses list does not contain the quess
+-compare the guess with real weight
+:win
+-:game ends win
+:wrong
+-save the guess in player info (list of quesses)
+-save the quess in all quesses list (need that value for cheater players). check if the guess already exist before add
+-increment number of attempts in player info
+-if number of attempts ==100 :game ends lose
+-compute delta and sleep player for that milliseconds
+-set is processing to false
+
+:game ends win
+-stop processing guesses
+-output player name
+-output total number of attempts (length of all quesses list)
+
+
+:game ends lose
+-stop processing guesses
+-find closest guess in all quesses list
+-output the closest guess value
+-output player name of the closest guess
+
+
+player
+-name
+-list of guesses
+-get guess
+-wait
+
+
+cheater
+
+
+player info
+-contains player
+-contains list of guesses
+-contains number of attempts. maybe length of all guesses. when ==100 game ends
+?contains thread for every player
+
+
+guess info
+-value
+-player
